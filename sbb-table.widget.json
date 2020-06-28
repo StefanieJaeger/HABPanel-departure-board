@@ -1,5 +1,5 @@
 {
-    "template": "<h4 ng-if=\"config.title\">{{config.title}}</h4>\n<table class=\"table\">\n<tr>\n  <th class=\"text-center\">Line</th>\n  <th>Time</th>\n  <th>Destination</th>\n  <th class=\"text-center\">Platform</th>\n  <th>Delay</th>\n</tr>\n<tr ng-repeat=\"row in itemValue(config.item).split('\\n') | limitTo:config.numberOfVisibleRows\">\n  <td ng-if=\"row.split('\\t')[1].indexOf(row.split('\\t')[0]) === -1\">{{row.split('\\t')[0]}}{{row.split('\\t')[1]}}</td>\n  <td ng-if=\"row.split('\\t')[1].indexOf(row.split('\\t')[0]) !== -1\">{{row.split('\\t')[0]}}</td>\n  <td class=\"text-left\">{{row.split('\\t')[2] * 1000 | date:'HH:mm'}}</td>\n  <td class=\"text-left\">{{row.split('\\t')[3]}}</td>\n  <td>{{row.split('\\t')[4]}}</td>\n  <td class=\"text-left\">{{row.split('\\t')[5]}}</td>\n</tr>\n</table>",
+    "template": "<h4 ng-if=\"config.title\">{{config.title}}</h4>\n<table class=\"table\">\n<tr>\n  <th class=\"text-center\">Line</th>\n  <th>Time</th>\n  <th>Destination</th>\n  <th class=\"text-center\">Platform</th>\n  <th>Delay</th>\n</tr>\n<tr ng-repeat=\"row in itemValue(config.item).split('\\n') | limitTo:config.numberOfVisibleRows\">\n  <td>{{row.split('\\t')[0] !== 'null' ? row.split('\\t')[0] : ''}}</td>\n  <td class=\"text-left\">{{row.split('\\t')[1] !== 'null' ? (row.split('\\t')[1] * 1000 | date:'HH:mm') : ''}}</td>\n  <td class=\"text-left\">{{row.split('\\t')[2] !== 'null' ? row.split('\\t')[2] : ''}}</td>\n  <td>{{row.split('\\t')[3] !== 'null' ? row.split('\\t')[3] : ''}}</td>\n  <td class=\"text-left\">{{row.split('\\t')[4] !== 'null' ? row.split('\\t')[4] : ''}}</td>\n</tr>\n</table>",
     "settings": [
         {
             "type": "number",
@@ -21,5 +21,7 @@
             "description": "Title of board",
             "default": "Departures"
         }
-    ]
+    ],
+    "source_url": "https://raw.githubusercontent.com/StefanieJaeger/HABPanel-departure-board/master/sbb-table.widget.json",
+    "readme_url": "https://github.com/StefanieJaeger/HABPanel-departure-board"
 }
